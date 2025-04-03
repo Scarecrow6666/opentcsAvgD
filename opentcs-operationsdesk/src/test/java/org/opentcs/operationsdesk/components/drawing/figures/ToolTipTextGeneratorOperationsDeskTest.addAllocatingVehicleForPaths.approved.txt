@@ -1,2 +1,0 @@
-<html>Path <b>Path-0001</b><hr>
-Allocated by: Vehicle-001<br></html>

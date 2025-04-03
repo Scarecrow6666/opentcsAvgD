@@ -1,5 +1,0 @@
-{
-  "destinationPoints" : [ "C", "F" ],
-  "sourcePoint" : "A",
-  "resourcesToAvoid" : [ "A", "B" ]
-}

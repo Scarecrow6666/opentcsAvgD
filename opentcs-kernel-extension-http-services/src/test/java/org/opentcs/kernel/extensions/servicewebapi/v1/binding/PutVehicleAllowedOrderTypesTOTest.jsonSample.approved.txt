@@ -1,3 +1,0 @@
-{
-  "orderTypes" : [ "some-orderType", "another-orderType", "orderType-3" ]
-}
