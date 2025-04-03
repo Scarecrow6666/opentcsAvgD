@@ -1,0 +1,42 @@
+// SPDX-FileCopyrightText: The openTCS Authors
+// SPDX-License-Identifier: MIT
+
+apply from: "${rootDir}/gradle/java-project.gradle"
+apply from: "${rootDir}/gradle/java-codequality.gradle"
+apply from: "${rootDir}/gradle/guice-project.gradle"
+
+dependencies {
+  // OpenTCS 核心依赖
+  implementation project(':opentcs-api-base')
+  implementation project(':opentcs-api-injection')
+  implementation project(':opentcs-common')
+  implementation project(':opentcs-kernel')
+  implementation project(':opentcs-strategies-default')
+
+  // 通信协议支持
+  implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5'  // MQTT
+  implementation 'com.squareup.okhttp3:okhttp:4.9.3'                    // HTTP
+  implementation 'io.netty:netty-all:4.1.68.Final'                      // TCP
+
+  // 工具库
+  implementation 'com.google.code.gson:gson:2.8.9'
+  implementation 'org.slf4j:slf4j-api:1.7.32'
+
+  // 日志
+  implementation 'org.slf4j:slf4j-api:1.7.32'
+  // JSON处理
+  implementation 'com.google.code.gson:gson:2.8.9'
+  // 测试
+  testImplementation 'junit:junit:4.13.2'
+}
+
+// 确保服务注册文件被打包
+jar {
+  from('src/main/resources') {
+    include 'META-INF/services/*'
+  }
+}
+
+task release {
+  dependsOn build
+}
